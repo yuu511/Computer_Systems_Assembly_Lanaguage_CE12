@@ -1,6 +1,7 @@
 *.bak
 *~
 *.swp
+.*.swp
 
 *.o
 *.out
