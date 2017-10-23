@@ -19,9 +19,9 @@ What happens when you subtract a larger number from a smaller number? Does the r
 sense? What happens when you add two numbers that won’t fit in 6 bits? 
 --
 
-It gives you a large number, which makes sense given that you are "adding" the 2sc to subtract. The calculator resets
-to zero when you add two numbers outside of its range, as the register does not have the appropriate amount of flip
-flops to hold a representation of that numerical value.
+It gives you a large number, which makes sense given that you are "adding" the 2sc to subtract. The calculator, depending
+on what you added, gives you a partial and incorrect representation of the number you are trying to add when attempting
+to perform an operation involving more than 6 bits.
 
 --
 Overall the lab helped me understand the reasoning behind using a 2sc for subtraction and actually assembling the
