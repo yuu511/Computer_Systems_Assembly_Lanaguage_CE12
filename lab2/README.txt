@@ -19,8 +19,9 @@ What happens when you subtract a larger number from a smaller number? Does the r
 sense? What happens when you add two numbers that won’t fit in 6 bits? 
 --
 
-It gives you a large number, which makes sense given that you are "adding" the 2sc to subtract. The calculator, depending
-on what you added, gives you a partial and incorrect representation of the number you are trying to add when attempting
+-The calcuator gives you a large number, which makes sense given that you are "adding" the 2sc to subtract. 
+
+-The calculator, depending on what you added, gives you a partial and incorrect representation of the number you are trying to add when attempting
 to perform an operation involving more than 6 bits.
 
 --
