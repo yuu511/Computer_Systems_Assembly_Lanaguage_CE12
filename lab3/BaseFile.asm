@@ -25,31 +25,61 @@ main:
     li $v0, 4
     syscall
    
-    # load 1st character in $t0 using $s0 pointer
-    la $t0, 0($s0)
+    #load 1st character of string input
+    lb $t0,0($s0)
+    #load - in byte form
+    lb $t1,Negative
+    
+    # if t0 and t1 are both -,ignore the first charcter
+    bne $t0,$t1,Else
+    	 addi $s0,$s0,1 
+Else:
+     nop
+#let t0 = Length of number
+li $t0,0
+#iterates through string and finds out length of number, points $s0 at exit character      	
+loop:
+  	lb $t1,($s0)
+  	beqz $t1,exit
+  	addi $s0,$s0,1
+  	addi $t0,$t0,1
+  	j loop 
+  		
+exit:
+     nop
  
-    # Store character "-" in t1
-    la $t1,Negative
+#subtraction of -1 back to go back to the last number
+addi $s0,$s0,-1
+    la $a0, debugln #DEBUG FORMAT
+    li $v0, 4
+    syscall 
+
+#length of number t0
+move $a0, $t0 
+li $v0, 1
+syscall
+    la $a0, debugln #DEBUG FORMAT
+    li $v0, 4
+    syscall
+lb $t1,($s0)
+addi $t1,$t1, -48
+
+    move $a0,$t1 #DEBUG
+    li $v0, 1
+   syscall
    
-    # if character = - , start at 2nd character, otherwise start at chracter
-    beq  $t0,$t1,NEG
-    NEG:     
-        addi $s0,$s0,-1 #go back to first character
-   
-    loop:
-        lb $a0,($t0)
-        beqz $a0,exit
-        addi $s0,$s0,1
-        la $t0,($s0)
-        lb $a0,($t0)
-        li $v0, 11
-        syscall
-        j loop
-       
-    exit:
-        nop
- 
- 
+addi $s0,$s0,-1
+lb $t1,($s0)
+addi $t1,$t1, -48
+    move $a0,$t1 #DEBUG
+    li $v0, 1
+   syscall
+
+
+
+
+
+
  
  
  
@@ -62,6 +92,8 @@ main:
 .data
 hello_msg: .asciiz  "akagi\n"
 YourNumber: .asciiz     "Input Number: "
-Negative: .asciiz   "-"
+Negative: .byte   '-'
 debugln: .asciiz    "\nDEBUG PRINTLN\n"
 # end hello.asm
+
+
