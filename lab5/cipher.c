@@ -22,7 +22,8 @@ void encode(char *key, char *cleartext, char *ciphertext)
 	for (i = 0; i < lc; i+= 1) 
 	{
 		ciphertext[i] = (unsigned char) (cleartext[i] + key[i % lk])%ASCII;
-		printf ("%d\n",ciphertext[i]);
+
+			printf ("%d\n ",ciphertext[i]);
 	}
 	ciphertext[lc] = '\0';
 	return;
@@ -42,7 +43,9 @@ void decode(char *key, char *ciphertext, char *cleartext)
 	int i, lk = strlen(key), lc = strlen(ciphertext);
 	for (i = 0; i < lc; i+= 1) 
 	{
+			
 		cleartext[i] = (unsigned char) (ciphertext[i] - key[i % lk]) % ASCII;
+
 	}
 	cleartext[lc] = '\0';
 	return;
