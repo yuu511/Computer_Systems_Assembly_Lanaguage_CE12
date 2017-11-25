@@ -36,11 +36,10 @@ main:
     # initialize const $s6 to 128
     li $s6,128
 
-    # find length of key , clear text ,encrypt text length
+    # find length of key , clear text 
     jal keylen
     jal clearlen
-    jal encryptlen
-
+    
     # Print arguments (key,given text)
     la $a0,givenkeyis 
     li $v0, 4
@@ -60,6 +59,10 @@ main:
 
     jal encode
 
+    # take encrypted text length
+
+    jal encryptlen
+
     # print encrypted text
 
     la $a0,encryptedtextis
@@ -78,9 +81,6 @@ main:
     move $a0, $s7
     li $v0,4
     syscall
-
-    
-
     li   $v0, 10 # 10 is the exit syscall.
     syscall     # do the syscall.  
 
